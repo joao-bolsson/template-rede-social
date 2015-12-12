@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Social Microblogging PRO - Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+	body a { text-decoration: none; }
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Social Microblogging PRO&rdquo; Documentation by &ldquo;Miguel Vasquez&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Social Microblogging PRO&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 12, October 2014<br>
+					By: Miguel Vasquez<br>
+					Email: <a href="mailto:miguelvasquezweb@gmail.com">miguelvasquezweb@gmail.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my script. If you have any questions that are beyond the scope of this help file, please feel free to email via <a href="mailto:miguelvasquezweb@gmail.com">miguelvasquezweb@gmail.com</a> Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#mysql">Setting MySQL</a></li>
+			<li><a href="#upload">Uploading Files</a></li>
+			<li><a href="#installation ">Installation</a></li>
+			<li><a href="#admin">Settings Admin Panel</a></li>
+			<li><a href="#twitter">Create App Twitter</a></li>
+			<li><a href="#customize">Customize</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>
+		</ol>
+		<hr>
+		
+		<p>
+			<strong>Social Microblogging PRO</strong> Twitter is a script style, designed to share news, events, 
+			or simply what you want, through publications of 140 characters, and may refer to 
+			other users, create Hashtag and share with other site users. a part of it can upload images, 
+			videos from Youtube, DailyMotion, Screenr, DotSub, Hulu (Permitted users only united states ) 
+			or Vimeo. Follow other users, send direct messages.
+		</p>
+		
+		<hr />
+		
+		<h3><strong>Requirements:</strong> - <a href="#toc">top</a></h3>
+		<ul>
+			<li>cURL</li>
+			<li>PDO Driver</li>
+			<li>GD Library</li>
+			<li>Enabled function mbstring</li>
+			<li>This script was developed with PHP OOP and MVC</li>
+			<li>allow_url_fopen (PHP.INI) is ON</li>
+		</ul>
+
+<hr />
+
+		<h3><strong>Important</strong> - <a href="#toc">top</a></h3>
+		
+		<p>
+		if your URL in <strong>Db.php</strong> is well: <strong>http://site.com</strong> can not enter if the URL have the www
+
+		To not have that problem with this can add to <strong>.htaccess</strong> the following code:
+		</p>
+		
+		<pre>
+		RewriteEngine On 
+		RewriteCond %{HTTP_HOST} ^(www\.yousite\.com)(:80)? [NC]
+		RewriteRule ^(.*) http://yousite.com/$1 [R=301,L]
+		</pre>
+		
+		<p>
+		If you want your site to always be so: <strong>yousite.com</strong> And if you want it that way: <strong>www.yousite.com</strong> add this then:
+		</p>
+		
+		<pre>
+		RewriteEngine On 
+		RewriteCond %{HTTP_HOST} ^(yousite\.com)(:80)? [NC]
+		RewriteRule ^(.*) http://www.yousite.com/$1 [R=301,L]
+		</pre>
+		
+		<p>
+		<strong>Important Do not delete the other lines. Htaccess</strong>
+		
+		<em>If the problem persists, verify that the "<strong>mbstring</strong>" is enabled</em>
+		</p>
+		
+		<hr>
+		
+		<h3 id="mysql"><strong>A) Setting MySQL</strong> - <a href="#toc">top</a></h3>
+		<p>
+			This script works with PHP 5.4 and MySQL 5.
+			The first thing to do is:
+			<ul>
+				<li>1.) Create a database</li>
+				<li>2.) Create a user for database</li>
+			</ul>
+			
+			
+		</p>
+	
+		<hr>
+
+		<h3 id="upload"><strong>B) Uploading Files</strong> - <a href="#toc">top</a></h3>
+
+		<p>
+			A) upload the folder <strong>"Script"</strong> to the <strong>"public_html"</strong> folder on your server.<br />
+            B) Log into your <strong>phpMyAdmin</strong> and import the <strong>social.sql</strong> file located in the folder <strong>"Mysql"</strong> (<strong>NOTE:</strong>  the database already must be created )
+		</p> 
+
+
+
+		<hr>
+		
+		<h3 id="installation "><strong>C) Installation</strong> - <a href="#toc">top</a></h3>
+		
+		<p>
+			Make sure <strong>PDO driver</strong> is enabled on your server, if not, you should ask your hosting provider 
+			activation of this driver, so that the script can work.
+		</p>
+		<p>After you have uploaded all files can start to setup the files.</p>
+		
+		<h3>&rsaquo;&rsaquo; Database Connection/URL Site</h3>
+		
+		<ol>
+			<li>Open the file <strong>Db.php</strong> located in the folder <strong>"application"</strong>, with any text editor, e.g: NOTEPAD</li>
+			<li>change the following parameters, for theirs:</li>
+		</ol>
+		  
+		  <pre>
+			$config->set('dbname', 'DATABASE NAME'); //<-- DATABASE NAME
+			$config->set('dbuser', 'USER'); //<-- USER
+			$config->set('dbpass', 'PASS'); //<-- PASS
+			define('URL_BASE', 'http://yousite.com/'); //<-- IMPORTANT: place a backslash at the end
+		  </pre>
+		<ol>
+			<li>Save and close, then upload the file to your server, in the folder <strong>"application"</strong></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="admin"><strong>D) Settings Admin Panel</strong> - <a href="#toc">top</a></h3>
+		
+		<p>In admin panel you can:</p>
+			
+			<strong>Access to admin panel</strong>
+			<pre>
+			http://yousite.com/admin/ //<-- IMPORTANT: place a backslash at the end
+			User: Admin
+			Pass: 12345
+		  </pre>
+		  
+			<ol>
+				<li>Change the site name</li>
+				<li>Set keywords for the site. (SEO)</li>
+				<li>Add a description (SEO)</li>
+				<li>Long of private messages, and publications</li>
+				<li>Edit pages e.g.: Help, Privacy, etc.</li>
+				<li>Change password.</li>
+				<li>Manage users.</li>
+				<li>Manage users reported.</li>
+				<li>Manage posts reported.</li>
+				<li>Manage Advertise</li>
+				<li>Admin can enable or disable the user records, and to verify whether or not users all from the admin panel.</li>
+				<li>Edit the color of the header icons, and edit the color of the icon Verified</li>
+			</ol>
+				
+		<hr>
+		
+		<h3 id="twitter"><strong>E) Create App Twitter</strong> - <a href="#toc">top</a></h3>
+		
+		<p>
+			1) Enter <a href="https://apps.twitter.com/" target="_blank">https://apps.twitter.com/</a><br />
+		</p>
+		
+		<img src="assets/images/screen_1.jpg" />
+		
+		<p>2) Click on "Create New App"</p>
+		
+		<img src="assets/images/screen_2.jpg" />
+		
+		<p>4) Fill out all fields</p>
+		
+		<ul>
+			<li><strong>Name:</strong> Your application name. This is used to attribute the source of a tweet and in user-facing authorization screens. 32 characters max.</li>
+			<li><strong>Description:</strong> Your application description, which will be shown in user-facing authorization screens. Between 10 and 200 characters max.</li>
+			<li><strong>Website:</strong> Your application's publicly accessible home page, where users can go to download, make use of, or find out more information about your application. This fully-qualified URL is used in the source attribution for tweets created by your application and will be shown in user-facing authorization screens.
+(If you don't have a URL yet, just put a placeholder here but remember to change it later.)</li>
+
+<li><strong>Callback URL</strong> Where should we return after successfully authenticating? OAuth 1.0a applications should explicitly specify their oauth_callback URL on the request token step, regardless of the value given here. To restrict your application from using callbacks, leave this field blank.</li>
+		</ul>
+		
+		<img src="assets/images/screen_3.jpg" />
+		
+		<p>5) Read "Developer Rules of the Road" and then click "Create your Twitter application"</p>
+		
+		<img src="assets/images/screen_4.jpg" />
+		
+		<p>6) Click "Keys and Access Tokens"</p>
+		
+		<img src="assets/images/screen_5.jpg" />
+		
+		<p>7) Open file <strong>application/DataConfig.php</strong></p>
+		
+		<img src="assets/images/screen_6.jpg" />
+		
+		<p>Copy the code in the following way:</p>
+		
+		<pre>
+			define('YOUR_CONSUMER_KEY', 'Consumer Key (API Key)'); //Consumer Key (API Key)
+			define('YOUR_CONSUMER_SECRET', 'Consumer Secret (API Secret)'); //Consumer Secret (API Secret)
+		</pre>
+		
+		<p style="color: #F00;">* If you do not want to let registered users from Twitter is empty variables so</p>
+		
+		<pre>
+			define('YOUR_CONSUMER_KEY', ''); //Consumer Key (API Key)
+			define('YOUR_CONSUMER_SECRET', ''); //Consumer Secret (API Secret)
+		</pre>
+	
+		<hr />
+		
+		<h3 id="customize"><strong>F) Customize</strong> - <a href="#toc">top</a></h3>
+		
+		<p><strong>Changing the logo</strong></p>
+		
+		<ul>
+			<li><strong>Path:</strong> <em>public / img / logo.png</em> </li>
+		</ul>
+		
+		<p><strong>Changing the favicon</strong></p>
+		
+		<ul>
+			<li><strong>Path:</strong> <em>public / img / favicon.ico</em> </li>
+		</ul>
+		
+		<p><strong>Change the background to the main page</strong></p>
+		
+		<ul>
+			<li><strong>Path:</strong> <em>public / img / bg.jpg</em> </li>
+			<li><strong>CSS:</strong> <em> Line 314 in public / css / main.css</em> </li>
+		</ul>
+		
+		<p><strong>Change the default link color</strong></p>
+		
+		<ul>
+			<li><strong>CSS:</strong> <em>Line: 208 in public / css / flat-ui.css</em> </li>
+		</ul>
+		
+		<p><strong>Change default image advertising</strong></p>
+		
+		<ul>
+			<li><strong>Path:</strong> <em>public / img_ad / ad.jpg</em> </li>
+		</ul>
+		
+		
+		<p><strong>Change default avatar</strong></p>
+		
+		<ul>
+			<li><strong>Path:</strong> <em>public / avatar / avatar.png</em> </li>
+		</ul>
+		
+		<p><strong>Backgrounds default page "Design"</strong></p>
+		
+		<ul>
+			<li><strong>Path:</strong> <em>public / backgrounds</em> </li>
+		</ul>
+		
+		<hr />
+		<h3><strong>* PHPMAILER Data setup - SMTP</strong> - <a href="#toc">top</a></h3>
+		
+		<p>Go to <em>application / DataConfig.php</em> line 31</p>
+		
+		<pre>
+			define( 'SMTP_HOST', '' ); //Specify main and backup SMTP servers - smtp1.example.com;smtp2.example.com
+			define( 'SMTP_USERNAME', '' ); //SMTP username
+			define( 'SMTP_PASSWORD', '' ); //SMTP password
+			define( 'SMTP_PORT', 587 ); //TCP port to connect to
+		</pre>
+		
+		<p>Should fill the relevant details of your SMTP provider and the script will use it automatically. 
+			<br /> IMPORTANT: If after you do not use the SMTP option only leave as it was before</p>
+		
+		<hr />
+		
+		
+		<h3><strong>* Sitemaps</strong> - <a href="#toc">top</a></h3>
+		
+		<p>To call the SiteMaps must place the following URL</p>
+		
+		<pre>-> http://yousite.com/public/sitemaps/sitemaps.xml</pre>
+		
+		<hr />
+		<h3 id="credits"><strong>G) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've used the following  files as listed.</p>
+		
+		<ul>
+			<li>jQuery - http://jquery.com/</li>
+			<li>Bootstrap 3.2 - http://getbootstrap.com/</li>
+			<li>Font Awesome - http://fortawesome.github.io/Font-Awesome/</li>
+			<li>IcoMoon - http://icomoon.io</li>
+			<li>Flat UI   - http://designmodo.github.io/Flat-UI/</li>
+			<li>Placeholder Plugin jquery.placeholder.1.1.1.min.js //  Mike Taylor, http://miketaylr.com</li>
+			<li>Char Count count.js //  Alen Grakalic</li>
+			<li>jquery Form // malsup.com/jquery/form/‎</li>
+			<li>jqueryTimeago.js // http://timeago.yarp.com/</li>
+			<li>jquery.scroll.js // http://andersonferminiano.com/jqueryscrollpagination/</li>
+			<li>colorpicker.js // Stefan Petre www.eyecon.ro</li>
+			<li>jquery.colorbox.js // Jack Moore - http://www.jacklmoore.com/colorbox</li>
+			<li>jquery.dataTables.js // Allan Jardine (www.sprymedia.co.uk) // www.datatables.net</li>
+			<li>PHPMAILER https://github.com/Synchro/PHPMailer</li>
+			<li>Readmore - http://jedfoster.com/Readmore.js/</li>
+			<li>Drag Background - https://github.com/kentor/jquery-draggable-background</li>
+			<li>Bootboxjs -  http://bootboxjs.com/</li>
+			<li>Images - unsplash - http://unsplash.com/</li>
+			<li>Avatars - http://uifaces.com/</li>
+			<li>Fonts - https://www.google.com/fonts</li>
+			<li>ShareThis - http://www.sharethis.com/</li>
+			<li>Google Maps - https://www.google.com/maps</li>
+		</ul>
+
+	<hr>
+		
+		
+		<p class="append-bottom alt large"><strong>Miguel Vasquez</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
